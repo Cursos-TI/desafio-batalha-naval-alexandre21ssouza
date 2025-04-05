@@ -10,7 +10,7 @@ int main() {
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
     
-    //Construção da matriz
+    //Construção da matriz - Declaração das variáveis
     int tabuleiro[10][10];
 
     //vetores com os navios na horizontal e vertical
@@ -27,23 +27,23 @@ int main() {
 
 
     
-    //Inicializando a matriz com 0
+    //Inicializando a matriz com 0, usando estrutura de repetição For aninhada
     for (int i = 0; i < 10; i++){
         for (int j = 0; j < 10; j++){
-           tabuleiro[i][j] = 0;
+           tabuleiro[i][j] = 0;//atribuindo o valor 0 em todas as posições
 
         }
 
     }
 
-    //Posicionando navioHorizontal_1 na matriz
+    //Posicionando navioHorizontal_1 na matriz, usando estrutura de repetição For
     for (int i = 0; i < 3; i++){
         //coluna_1 + i, distribui o numero 3 nas posições das colunas
         tabuleiro[linha_1][coluna_1 + i] = navioHorizontal_1[i];
     }
     
 
-    ////Posicionando navioVertical_1 na matriz
+    ////Posicionando navioVertical_1 na matriz usando estrutura de repetição For
     for (int i = 0; i < 3; i++){
         //linha_2 + i, distribui o numero 3 nas posições das linhas
         tabuleiro[linha_2 +i][coluna_2] = navioVertical_1[i];
@@ -52,6 +52,7 @@ int main() {
     //Impressão do jogo batalha naval com as posições criadas dos navios
     printf("-------------------Batalha Naval------------------\n\n\n");
 
+    //Exibindo o tabuleiro, usando estrutura de repetição For aninhada
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             printf("%d ", tabuleiro[i][j]);
