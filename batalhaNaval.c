@@ -5,12 +5,16 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
-    
-    //Construção da matriz - Declaração das variáveis
+        
+    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
+    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
+    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
+    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+
+
+   //------- Declaração das variáveis ----------
+
+    //Construção da matriz - 
     int tabuleiro[10][10];
 
     //vetores com os navios na horizontal e vertical
@@ -26,7 +30,19 @@ int main() {
     int coluna_2 = 9;
 
 
+    //vetores com os navios na horizontal e vertical
+    int navioDiagonal_E_D_1[3] ={3,3,3};//Navio em diagonal esquerda superior para direita inferior
+    int navioDiagonal_D_E_1[3] ={3,3,3};//navio em diagonal direita superior para esquerda inferior
     
+    //Direcionando a posição do navio em diagonal esquerda superior para direita inferior
+    int linha_diagonal_1 = 0; 
+    int coluna_diagonal_1 = 0;
+
+    //Direcionando a posição do navio em diagonal direita superior para esquerda inferior
+    int linha_diagonal_2 = 0; 
+    int coluna_diagonal_2 = 9;
+
+
     //Inicializando a matriz com 0, usando estrutura de repetição For aninhada
     for (int i = 0; i < 10; i++){
         for (int j = 0; j < 10; j++){
@@ -43,11 +59,27 @@ int main() {
     }
     
 
-    ////Posicionando navioVertical_1 na matriz usando estrutura de repetição For
+    //Posicionando navioVertical_1 na matriz usando estrutura de repetição For
     for (int i = 0; i < 3; i++){
         //linha_2 + i, distribui o numero 3 nas posições das linhas
         tabuleiro[linha_2 +i][coluna_2] = navioVertical_1[i];
     }
+
+    /*Direcionando a posição do navio em diagonal esquerda superior para direita inferior
+    usando o For e if para executar os comandos e distribuir os navios em diagonal
+    */
+    for (int i = 0; i < 3; i++)
+    if (linha_diagonal_1 + i < 10 && coluna_diagonal_1 + i < 10 && tabuleiro[linha_diagonal_1 + i][coluna_diagonal_1 + i] == 0)
+        tabuleiro[linha_diagonal_1 + i][coluna_diagonal_1 + i] = navioDiagonal_E_D_1[i];
+
+
+    /*Posicionando navio em diagonal direita superior para esquerda inferior
+    usando o For e if para executar os comandos e distribuir os navios em diagonal
+    */
+    for (int i = 0; i < 3; i++)
+    if (linha_diagonal_2 + i < 10 && coluna_diagonal_2 - i >= 0 && tabuleiro[linha_diagonal_2 + i][coluna_diagonal_2 - i] == 0)
+        tabuleiro[linha_diagonal_2 + i][coluna_diagonal_2 - i] = navioDiagonal_D_E_1[i];
+
     
     //Impressão do jogo batalha naval com as posições criadas dos navios
     printf("-------------------Batalha Naval------------------\n\n\n");
@@ -60,10 +92,7 @@ int main() {
         printf("\n");
     }
 
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
