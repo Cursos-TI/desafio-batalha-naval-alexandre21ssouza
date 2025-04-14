@@ -81,6 +81,35 @@ int main() {
         tabuleiro[linha_diagonal_2 + i][coluna_diagonal_2 - i] = navioDiagonal_D_E_1[i];
 
     
+    // Nível Mestre - Habilidades Especiais com Matrizes
+    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
+    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
+    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+
+    //Representar as posições afetadas pela habilidade do desafio nível Mestre
+   //Declaração das matrizes, cone, cruz e octaedro
+   
+   //Cone com sua matriz e suas linhas e colunas
+   int cone[5][5];
+   //Coordenadas de posicionamento na matriz principal do tabuleiro
+   int cone_linha = 3;
+   int cone_coluna = 6;
+
+   //Cruz com sua matriz e suas linhas e colunas
+    int cruz[5][5];
+    //Coordenadas de posicionamento na matriz principal do tabuleiro
+    int cruz_linha = 6;
+    int cruz_coluna = 6;
+
+   //Octaedro com sua matriz e suas linhas e colunas
+    int octaedro[5][5];
+    //Coordenadas de posicionamento na matriz principal do tabuleiro
+    int octaedro_linha = 6;
+    int octaedro_coluna = 1;
+
+
+
+
     //Impressão do jogo batalha naval com as posições criadas dos navios
     printf("-------------------Batalha Naval------------------\n\n\n");
 
@@ -94,11 +123,7 @@ int main() {
 
     
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
+   
     // Exemplos de exibição das habilidades:
     // Exemplo para habilidade em cone:
     // 0 0 1 0 0
