@@ -2,15 +2,12 @@
 
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+
 
 int main() {
         
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
-
+    
 
    //------- Declaração das variáveis ----------
 
@@ -65,53 +62,161 @@ int main() {
         tabuleiro[linha_2 +i][coluna_2] = navioVertical_1[i];
     }
 
+
+
     /*Direcionando a posição do navio em diagonal esquerda superior para direita inferior
     usando o For e if para executar os comandos e distribuir os navios em diagonal
     */
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++){
     if (linha_diagonal_1 + i < 10 && coluna_diagonal_1 + i < 10 && tabuleiro[linha_diagonal_1 + i][coluna_diagonal_1 + i] == 0)
         tabuleiro[linha_diagonal_1 + i][coluna_diagonal_1 + i] = navioDiagonal_E_D_1[i];
+
+    }
+
 
 
     /*Posicionando navio em diagonal direita superior para esquerda inferior
     usando o For e if para executar os comandos e distribuir os navios em diagonal
     */
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++){
     if (linha_diagonal_2 + i < 10 && coluna_diagonal_2 - i >= 0 && tabuleiro[linha_diagonal_2 + i][coluna_diagonal_2 - i] == 0)
         tabuleiro[linha_diagonal_2 + i][coluna_diagonal_2 - i] = navioDiagonal_D_E_1[i];
+    }
+
+
 
     
     // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
 
-    //Representar as posições afetadas pela habilidade do desafio nível Mestre
-   //Declaração das matrizes, cone, cruz e octaedro
    
    //Cone com sua matriz e suas linhas e colunas
    int cone[5][5];
    //Coordenadas de posicionamento na matriz principal do tabuleiro
-   int cone_linha = 3;
-   int cone_coluna = 6;
+   int cone_linha = 5;
+   int cone_coluna = 7;
 
    //Cruz com sua matriz e suas linhas e colunas
     int cruz[5][5];
     //Coordenadas de posicionamento na matriz principal do tabuleiro
-    int cruz_linha = 6;
-    int cruz_coluna = 6;
+    int cruz_linha = 7;
+    int cruz_coluna = 2;
 
    //Octaedro com sua matriz e suas linhas e colunas
     int octaedro[5][5];
     //Coordenadas de posicionamento na matriz principal do tabuleiro
-    int octaedro_linha = 6;
-    int octaedro_coluna = 1;
+    int octaedro_linha = 2;
+    int octaedro_coluna = 4;
 
+
+    //Desenhando as formas Cone, Cruz e Octaedro em uma matriz 5x5 
+
+    //Inicia a matriz do cone
+    printf("Cone: \n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            //popula a sua forma de cone
+            if (j >= 2 - i && j <= 2 + i) {
+                cone[i][j] = 1;
+            } else {
+                cone[i][j] = 0;
+            }
+            printf("%d ", cone[i][j]);
+        }
+        printf("\n\n");
+    }
+
+    //Inicia a matriz da cruz
+    printf("Cruz: \n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            //popula a sua forma de cruz
+            if (i == 2 || j == 2) {
+                cruz[i][j] = 1;
+            } else {
+                cruz[i][j] = 0;
+            }
+            printf("%d ", cruz[i][j]);
+        }
+        printf("\n\n");
+    }
+
+    //Inicia a matriz do octaedro
+    printf("Octaedro: \n");
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if ((i == 0 || i == 4) && j == 2) {
+                octaedro[i][j] = 1;
+            } else if ((i == 1 || i == 3) && j >= 1 && j <= 3) {
+                octaedro[i][j] = 1;
+            } else if (i == 2) {
+                octaedro[i][j] = 1;
+            } else {
+                octaedro[i][j] = 0;
+            }
+    
+            printf("%d ", octaedro[i][j]);
+        }
+        printf("\n\n");
+    }
+ 
+    //Aplicando as formas dentro do tabuleiro matriz 10 x 10
+
+
+    //cone
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            //variáveis que recebe a lógica de posicionamento e coordenadas, posicionando a forma corretamente
+            int linha_tabuleiro = cone_linha + i - 2;
+            int coluna_tabuleiro = cone_coluna + j - 2;
+
+            //Aplicando o if, para aplicar o preenchimento no tabuleiro  em sua respectivas posições
+            if (linha_tabuleiro >= 0 && linha_tabuleiro < 10 && coluna_tabuleiro >= 0 && coluna_tabuleiro < 10) {
+                if (cone[i][j] == 1 && tabuleiro[linha_tabuleiro][coluna_tabuleiro] == 0) {
+                    tabuleiro[linha_tabuleiro][coluna_tabuleiro] = 5;
+                }
+            }
+        }
+    }
+
+
+    
+    //cruz
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+             //variáveis que recebe a lógica de posicionamento e coordenadas, posicionando a forma corretamente
+            int linha_tabuleiro = cruz_linha + i - 2;
+            int coluna_tabuleiro = cruz_coluna + j - 2;
+            //Aplicando o if, para aplicar o preenchimento no tabuleiro  em sua respectivas posições
+            if (linha_tabuleiro  >= 0 && linha_tabuleiro  < 10 && coluna_tabuleiro  >= 0 && coluna_tabuleiro  < 10) {
+                if (cruz[i][j] == 1 && tabuleiro[linha_tabuleiro ][coluna_tabuleiro ] == 0) {
+                    tabuleiro[linha_tabuleiro ][coluna_tabuleiro ] = 5;
+                }
+            }
+        }
+    }
+
+    //octaedro
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            //variáveis que recebe a lógica de posicionamento e coordenadas, posicionando a forma corretamente          
+            int linha_tabuleiro  = octaedro_linha + i - 2;
+            int coluna_tabuleiro  = octaedro_coluna + j - 2;
+
+            //Aplicando o if, para aplicar o preenchimento no tabuleiro em sua respectivas posições
+            if (linha_tabuleiro  >= 0 && linha_tabuleiro  < 10 && coluna_tabuleiro  >= 0 && coluna_tabuleiro  < 10) {
+                if (octaedro[i][j] == 1 && tabuleiro[linha_tabuleiro ][coluna_tabuleiro ] == 0) {
+                    tabuleiro[linha_tabuleiro ][coluna_tabuleiro ] = 5;
+                }
+            }
+        }
+    }
 
 
 
     //Impressão do jogo batalha naval com as posições criadas dos navios
     printf("-------------------Batalha Naval------------------\n\n\n");
+
+    //O Tabuleiro foi projetado para não sobrepor a posição dos navios do desafio anterior.
 
     //Exibindo o tabuleiro, usando estrutura de repetição For aninhada
     for (int i = 0; i < 10; i++) {
@@ -121,24 +226,6 @@ int main() {
         printf("\n");
     }
 
-    
-
-   
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
-
+ 
     return 0;
 }
